@@ -1,0 +1,74 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+
+  datasource:
+    driver-class-name:  com.mysql.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/book?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username:  root
+    password: 123456
+  jdbc:
+    template:
+      query-timeout: 3
+
+
+
+  druid:
+    aop-patterns: com.lwc.admin.*  #springbean监控
+    filters: stat,wall,slf4j  #所有开启的功能
+
+    stat-view-servlet:  #监控页配置
+      enabled: true
+      login-username: admin
+      login-password: admin
+      resetEnable: false
+
+    web-stat-filter:  #web监控
+      enabled: true
+      urlPattern: /*
+      exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+
+
+    filter:
+      stat: #sql监控
+        slow-sql-millis: 1000
+        logSlowSql: true
+        enabled: true
+      wall: #防火墙
+        enabled: true
+        config:
+          drop-table-allow: false
+
+
+
+# 配置mybatis规则、使用MyBatisPlus则此项配置无效
+mybatis:
+#  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+      enabled: true
+    info:
+      enabled: true
+    beans:
+      enabled: true
+
+info:
+  appName: boot-admin
+  appVersion: 1.0.0
+  mavenProjectName: @project.artifactId@
+  mavenProjectVersion: @project.version@
+server:
+  port: 8080
