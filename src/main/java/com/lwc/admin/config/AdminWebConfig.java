@@ -23,7 +23,7 @@ public class AdminWebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/**")     //选择添加路径哪些被拦截
-                .excludePathPatterns("/","/login","/css/**","/fonts/**","/images/**","/js/**","/aaa/**","/anno")
+                .excludePathPatterns("/","/login","/css/**","/fonts/**","/images/**","/js/**","/aaa/**","/anno","/ico/**")
         .excludePathPatterns("/LoginController");   //去除要拦截的路径
     }
 }

@@ -20,7 +20,7 @@ public class MyComHealthIndicator extends AbstractHealthIndicator {
         }else {
             builder.status(Status.OUT_OF_SERVICE);
             map.put("err","连接超时");
-            map.put("ms",3000);
+            map.put("ms",3000000);
         }
         builder.withDetail("code",100)
         .withDetails(map);
