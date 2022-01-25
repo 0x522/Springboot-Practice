@@ -29,7 +29,7 @@ spring:
     web-stat-filter:  #web监控
       enabled: true
       urlPattern: /*
-      exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      exclusions: '*.html,*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
 
 
     filter:

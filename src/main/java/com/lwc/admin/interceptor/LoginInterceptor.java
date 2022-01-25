@@ -16,17 +16,20 @@ import javax.servlet.http.HttpSession;
 
 @Slf4j
 public class LoginInterceptor implements HandlerInterceptor {
-    /*目标方法完成之前
-     *
-     *
-     * */
-
+    /**
+     * 目标方法完成之前
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
 
         String requestURI = request.getRequestURI();
-        log.info("拦截到的请求是{}",requestURI);
+//        log.info("拦截到的请求是{}",requestURI);
         //登录检查逻辑
         HttpSession session = request.getSession();
         Object loginUser = session.getAttribute("loginUser");
@@ -44,12 +47,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     /*目标方法完成以后*/
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        log.info("postHandle请求的是{}",modelAndView);
+//        log.info("postHandle请求的是{}",modelAndView);
     }
 
     /*页面渲染之后*/
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-      log.info("afterCompletion请求的是{}",ex);
+//      log.info("afterCompletion请求的是{}",ex);
     }
 }
