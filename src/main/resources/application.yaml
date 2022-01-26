@@ -6,10 +6,10 @@ spring:
 
 
   datasource:
-    driver-class-name:  com.mysql.jdbc.Driver
-    url:  jdbc:mysql://114.116.119.246:3306/book?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username:  root
-    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://114.116.119.246:3306/book?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: wz123000
   jdbc:
     template:
       query-timeout: 3
@@ -20,13 +20,13 @@ spring:
     aop-patterns: com.lwc.admin.*  #springbean监控
     filters: stat,wall,slf4j  #所有开启的功能
 
-    stat-view-servlet:  #监控页配置
+    stat-view-servlet: #监控页配置
       enabled: true
       login-username: admin
       login-password: admin
       resetEnable: false
 
-    web-stat-filter:  #web监控
+    web-stat-filter: #web监控
       enabled: true
       urlPattern: /*
       exclusions: '*.html,*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
@@ -46,7 +46,7 @@ spring:
 
 # 配置mybatis规则、使用MyBatisPlus则此项配置无效
 mybatis:
-#  config-location: classpath:mybatis/mybatis-config.xml
+  #  config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
 
 
