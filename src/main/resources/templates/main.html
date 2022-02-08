@@ -22,6 +22,8 @@
 
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="js/morris-chart/morris.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-select.scss" rel="stylesheet" media="screen">
 
     <!--common-->
 
@@ -45,27 +47,22 @@
 
         <!-- page heading start-->
         <div class="page-heading">
-            <h3>
-                输入栏
-            </h3>
-
-            <textarea id="intext" class="inserttext" style="width: 1000px; height: 300px;"></textarea>
-            <button onclick="upper()" style="height: 40px;width: 60px" id="btn1">转大写</button>
-            <button onclick="lower()" style="height: 40px;width: 60px" id="btn2">转小写</button>
-            <button onclick="firstUpper()" style="height: 40px;width: 60px" id="btn3">首字母转大写</button>
+                <h3>
+                    输入栏
+                </h3>
+            <textarea id="intext" class="inserttext" style="width: 1000px; height: 300px;position: relative"></textarea>
+            <div>
+                <button type="button" class="btn btn-info" onclick="upper()" id="btn1">转大写</button>
+                <!--            <button onclick="upper()" style="height: 40px;width: 60px" id="btn1">转大写</button>-->
+                <button type="button" class="btn btn-info" onclick="lower()" id="btn2">转小写</button>
+                <!--            <button onclick="lower()" style="height: 40px;width: 60px" id="btn2">转小写</button>-->
+                <button type="button" class="btn btn-info" onclick="firstUpper()" id="btn3">首字母转大写</button>
+                <!--            <button onclick="firstUpper()" style="height: 40px;width: 60px" id="btn3">首字母转大写</button>-->
+            </div>
             <h3>
                 输出栏
             </h3>
-
             <textarea id="puttext" class="output" style="width: 1000px; height: 300px;"></textarea>
-
-            <select id="checkbox"
-                    style="position: absolute;right: 80px;top: 80px;width: 120px;height: 50px">
-                <option value="volvo">大小写转换</option>
-                <option value="saab">百度翻译</option>
-                <!--                <option value="opel">Opel</option>-->
-                <!--                <option value="audi">Audi</option>-->
-            </select>
         </div>
     </div>
     <!-- main content end-->
@@ -111,7 +108,14 @@
 
 <!--Dashboard Charts-->
 <script src="js/dashboard-chart-init.js"></script>
+<script src="js/bootstrap-select.js"></script>
 <script>
+
+    $(document).ready(function() {
+
+        showFuncId();
+
+    })
     function upper() {
         $.ajax({
             type: "POST",
@@ -151,6 +155,27 @@
         })
     }
 
+    function showFuncId(){
+        $('#sel_role').empty();
+        var ciValue = $('#sel_role');
+        ciValue.append('请选择');
+        $.ajax({
+            url :  "/toolcontroller/mainSelect",
+            type : 'post',
+            dataType : 'json',
+            data: {"function_id": 'main_select'},
+            success : function (opts) {
+                debugger;
+            if (opts && opts.length > 0) {
+                var html = [];
+                for (var i = 0; i < opts.length; i++) {
+                    html.push(''+opts[i]+'');
+                }
+                ciValue.append(html.join(''));
+            }
+        }
+    });
+    }
 </script>
 
 

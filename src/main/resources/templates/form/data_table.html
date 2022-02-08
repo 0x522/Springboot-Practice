@@ -3,13 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}">
-    <script src="js/jquery-1.10.2.min.js" th:href="@{css/js/jquery-1.10.2.min.js}"></script>
-    <script src="js/bootstrap.min.js" th:href="@{js/bootstrap.min.js}"></script>
-    <link rel="stylesheet" href="bootstrap-table.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/layui/css/layui.css}">
+    <script type="text/javascript" th:src="@{/js/jquery/jquery-1.11.3.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layui/layui.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts/echarts.min.js}"></script>
+    <link th:include="common :: commonheader">
 </head>
-<body>
-
+<body class="sticky-header">
+<section>
+<div th:replace="common :: #leftmenu"></div>
+<div class="main-content" >
+    <div th:replace="common :: headermenu"></div>
+    <div class="page-heading">
+    <div class="layui-row" style="padding: 10px;">
+        <div class="layui-form">
+            <div class="layui-inline">
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <input class="layui-input" id="keywords" type="text" placeholder="用户名">
+                    </div>
+<!--                    <div class="layui-input-inline">-->
+<!--                        <button class="layui-btn" onclick="logSearch()" data-type="reload">查询</button>-->
+<!--                    </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="layui-row">
+    <div class="layui-col-xs12">
+        <table class="layui-hide" id="tbLog" lay-filter="tlbLog"></table>
+    </div>
+</div></div>
+</div>
+</section>
+<div th:include="common :: #commonscript"></div>
+</div>
 </body>
+<script type="application/javascript" th:inline="none">
+    var layer;
+    var element;
+    var table;
+    var laydate;
+    var form;
+    layui.use(['element', 'layer', 'table', 'laydate', 'form'], function () {
+        table = layui.table;//表格
+        layer = layui.layer;//弹层
+        element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+        form = layui.form;
+        form.render();
+        initPage();
+    });
+    //页面初始化
+    function initPage() {
+        debugger;
+        table.render({
+            id: "log",
+            elem: '#tbLog',
+            height: 550,
+            method: 'post',
+            limit: 10,
+            // limits: [5, 10],
+            url: '/toolcontroller/allUser',//数据接口
+            title: '日志管理',
+            page: false, //开启分页
+            //toolbar: 'default', //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            totalRow: false, //开启合计行
+            cols: [[{
+                field: 'id', fixed: 'left', title: 'id', width: '20%'
+            }, {
+                field: 'username', fixed: 'left', title: '用户名', width: '40%'
+            }, {
+                field: 'email', fixed: 'left', title: '邮箱', width: '40%'
+            }
+            ]]
+        });
+    }
+
+
+</script>
 </html>

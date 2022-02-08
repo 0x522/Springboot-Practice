@@ -6,6 +6,8 @@ import com.lwc.admin.mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AdminService {
 
@@ -14,5 +16,13 @@ public class AdminService {
 
     public Admin getAdmin(Integer id){
         return  adminMapper.getAdmin(id);
+    }
+
+    /**
+     * 所有用户信息
+     * @return
+     */
+    public List<Admin> allUser(){
+        return adminMapper.allUser();
     }
 }

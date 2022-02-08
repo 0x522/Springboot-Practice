@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwc.admin.mapper.FunctionSelectMapper">
+    <select id="muchSelected" parameterType="java.lang.String" resultType="java.lang.String">
+    select function_name from function_select where function_id = #{function_id}
+  </select>
+    <select id="dataSelect" resultType="com.lwc.admin.bean.FunctionSelect">
+        select * from function_select
+    </select>
+</mapper>

@@ -5,6 +5,7 @@ spring:
       max-request-size: 100MB
 
 
+
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://114.116.119.246:3306/book?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
@@ -41,6 +42,10 @@ spring:
         enabled: true
         config:
           drop-table-allow: false
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 
 
 

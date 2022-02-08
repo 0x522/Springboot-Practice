@@ -15,8 +15,6 @@ public class TableController {
 
     @GetMapping("/basic_table")
     public String basic_table() {
-
-
         return "table/basic_table";
     }
 
@@ -27,23 +25,14 @@ public class TableController {
                 new User("lise", "45678"),
                 new User("wangwu", "85236"));
         model.addAttribute("User", userList);
-
         return "table/dynamic_table";
     }
 
 
     @GetMapping("/responsive_table")
     public String responsive_table() {
-
-
         return "table/responsive_table";
     }
 
-    @GetMapping("/editable_table")
-    public String editable_table() {
-
-
-        return "table/editable_table";
-    }
 
 }

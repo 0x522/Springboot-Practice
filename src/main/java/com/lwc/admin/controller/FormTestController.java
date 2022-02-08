@@ -18,26 +18,21 @@ public class FormTestController {
 
     @GetMapping("/form_layouts")
     public String  form_layouts(){
-
-
         return "form/form_layouts";
     }
+
     @GetMapping("/data_table")
     public String data_table(){
-        return "from/data_table";
+        return "form/data_table";
     }
-
 
     @PostMapping("/upload")
     public String upload(@RequestParam("email") String email,
                          @RequestParam("username") String username,
                          @RequestPart("headerImg") MultipartFile headerImg,
                          @RequestPart("photos") MultipartFile[] photos) throws IOException {
-
-
         log.info("上传的信息：email={}，username={}，headerImg={}，photos={}",
                 email,username,headerImg.getSize(),photos.length);
-
         if(!headerImg.isEmpty()){
             String originalFilename = headerImg.getOriginalFilename();
             headerImg.transferTo(new File("F:\\cache\\"+originalFilename));
@@ -50,9 +45,6 @@ public class FormTestController {
                 }
             }
         }
-
-
         return "main";
-
     }
 }
