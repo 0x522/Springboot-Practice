@@ -29,16 +29,12 @@ public class LoginController {
     @Autowired
     AdminService adminService;
 
-
-
-
-
-    @GetMapping("/ad")
-    @ResponseBody
-    public Admin getById(@RequestParam("id") Integer id) {
-        return adminService.getAdmin(id);
-
-    }
+//    @GetMapping("/ad")
+//    @ResponseBody
+//    public Admin getById(@RequestParam("id") Integer id) {
+//        return adminService.getAdmin(id);
+//
+//    }
 
     @GetMapping(value = {"/", "/login"})
     public String loginPage() {
@@ -50,11 +46,16 @@ public class LoginController {
     @PostMapping("/login")
     public String main(User user, HttpSession session, Model model) {
         if ((!StringUtils.isEmpty(user.getUserName())) && StringUtils.hasLength(user.getPassword())) {
-            session.setAttribute("loginUser", user);
-
-            return "redirect:/main.html";//登录成功就去首页
+            Integer cnt=adminService.getAdmin(user.getUserName(),user.getPassword());
+            if(cnt>0) {
+                session.setAttribute("loginUser", user);
+                return "redirect:/main.html";//登录成功就去首页
+            }else {
+                model.addAttribute("msg","账号或者密码错误");
+            }
+        }else {
+            model.addAttribute("msg", "账号或者密码不能为空");
         }
-        model.addAttribute("msg", "账号或者密码不能为空");
         return "login";
     }
 

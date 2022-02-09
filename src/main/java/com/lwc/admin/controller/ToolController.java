@@ -82,8 +82,7 @@ public class ToolController {
      */
     @ResponseBody
     @RequestMapping("/allUser")
-    public R allUser(){
-        List<Admin> list=adminService.allUser();
-        return  R.ok(adminService.allUser());
+    public R allUser(@RequestParam("keywords") String keywords){
+        return  R.ok(adminService.allUser(keywords));
     }
 }

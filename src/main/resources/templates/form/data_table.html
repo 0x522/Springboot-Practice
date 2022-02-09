@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>用户信息</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
@@ -25,9 +25,9 @@
                     <div class="layui-input-inline">
                         <input class="layui-input" id="keywords" type="text" placeholder="用户名">
                     </div>
-<!--                    <div class="layui-input-inline">-->
-<!--                        <button class="layui-btn" onclick="logSearch()" data-type="reload">查询</button>-->
-<!--                    </div>-->
+                    <div class="layui-input-inline">
+                        <button class="layui-btn" onclick="logSearch()" data-type="reload">查询</button>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,6 @@
     });
     //页面初始化
     function initPage() {
-        debugger;
         table.render({
             id: "log",
             elem: '#tbLog',
@@ -67,9 +66,12 @@
             limit: 10,
             // limits: [5, 10],
             url: '/toolcontroller/allUser',//数据接口
+            where: {
+                keywords: $("#keywords").val()
+            },
             title: '日志管理',
             page: false, //开启分页
-            //toolbar: 'default', //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            toolbar: 'default', //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             totalRow: false, //开启合计行
             cols: [[{
                 field: 'id', fixed: 'left', title: 'id', width: '20%'
@@ -82,6 +84,13 @@
         });
     }
 
+    function logSearch() {
+        table.reload('log', {
+            where: {
+                keywords: $("#keywords").val()
+            }
+        });
+    }
 
 </script>
 </html>

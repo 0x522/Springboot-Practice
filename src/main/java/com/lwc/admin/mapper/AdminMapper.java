@@ -12,8 +12,8 @@ import java.util.List;
 @Mapper
 public interface AdminMapper  extends BaseMapper<Admin> {
 
-   public Admin getAdmin(Integer id);
+   public Integer getAdmin(String username,String password);
 
-   public List<Admin> allUser();
+   public List<Admin> allUser(String keywords);
 
 }

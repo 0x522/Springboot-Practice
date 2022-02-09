@@ -14,15 +14,15 @@ public class AdminService {
     @Autowired
     AdminMapper adminMapper;
 
-    public Admin getAdmin(Integer id){
-        return  adminMapper.getAdmin(id);
+    public Integer getAdmin(String username,String password){
+        return  adminMapper.getAdmin(username,password);
     }
 
     /**
      * 所有用户信息
      * @return
      */
-    public List<Admin> allUser(){
-        return adminMapper.allUser();
+    public List<Admin> allUser(String keywords){
+        return adminMapper.allUser(keywords);
     }
 }
