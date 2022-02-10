@@ -23,25 +23,16 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class LoginController {
 
-
     @Autowired
     JdbcTemplate jdbcTemplate;
     @Autowired
     AdminService adminService;
-
-//    @GetMapping("/ad")
-//    @ResponseBody
-//    public Admin getById(@RequestParam("id") Integer id) {
-//        return adminService.getAdmin(id);
-//
-//    }
 
     @GetMapping(value = {"/", "/login"})
     public String loginPage() {
 
         return "login";
     }
-
 
     @PostMapping("/login")
     public String main(User user, HttpSession session, Model model) {

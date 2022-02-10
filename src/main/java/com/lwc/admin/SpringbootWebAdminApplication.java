@@ -10,14 +10,8 @@ import org.springframework.lang.Nullable;
 @SpringBootApplication
 public class SpringbootWebAdminApplication {
 
-
-
     public static void main(String[] args) {
-
         SpringApplication.run(SpringbootWebAdminApplication.class, args);
-
-
-
     }
 
 }

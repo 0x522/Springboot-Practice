@@ -3,6 +3,7 @@ package com.lwc.admin.controller;
 
 import com.lwc.admin.bean.Admin;
 import com.lwc.admin.bean.FunctionSelect;
+import com.lwc.admin.bean.vo.PageEntity;
 import com.lwc.admin.server.AdminService;
 import com.lwc.admin.server.FunctionSelectService;
 import com.lwc.admin.util.R;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lwc.admin.util.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -82,7 +85,9 @@ public class ToolController {
      */
     @ResponseBody
     @RequestMapping("/allUser")
-    public R allUser(@RequestParam("keywords") String keywords){
-        return  R.ok(adminService.allUser(keywords));
+    public PageEntity allUser(int page, int limit, String keywords){
+        Map map=new HashMap<>();
+        map.put("keywords",keywords);
+        return adminService.allUser(page,limit,map);
     }
 }

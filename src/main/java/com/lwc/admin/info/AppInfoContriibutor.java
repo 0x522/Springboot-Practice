@@ -11,9 +11,6 @@ import java.util.Collections;
 @Component
 public class AppInfoContriibutor implements InfoContributor {
 
-
-
-
     @Override
     public void contribute(Info.Builder builder) {
         builder.withDetail("msg","123")

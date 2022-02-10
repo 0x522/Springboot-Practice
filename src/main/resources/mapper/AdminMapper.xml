@@ -6,7 +6,10 @@
     <select id="getAdmin" resultType="java.lang.Integer">
     select count(1) from user where username=#{username} and password=#{password}
   </select>
-    <select id="allUser" resultType="com.lwc.admin.bean.Admin">
-        select * from user where username like concat ('%',#{keywords},'%')
+    <select id="allUser" parameterType="java.util.Map" resultType="com.lwc.admin.bean.Admin">
+        select  (@id:=@id+1) as id,username,email from user,(select  @id:=0)as it where username like concat ('%',#{keywords},'%') order by id limit #{limit} offset #{offset}
+    </select>
+    <select id="allUserCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(1) from user where username like concat ('%',#{keywords},'%')
     </select>
 </mapper>

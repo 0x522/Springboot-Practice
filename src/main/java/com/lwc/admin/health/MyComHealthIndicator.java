@@ -12,7 +12,6 @@ public class MyComHealthIndicator extends AbstractHealthIndicator {
     @Override
     protected void doHealthCheck(Health.Builder builder) throws Exception {
         Map<String,Object> map=new HashMap<>();
-
         if(1==2){
             builder.status(Status.UP);
             map.put("count",1);

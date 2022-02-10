@@ -37,14 +37,11 @@
     <!-- left side start-->
     <div th:replace="common :: #leftmenu"></div>
     <!-- left side end-->
-
     <!-- main content start-->
     <div class="main-content">
-
         <!-- header section start-->
         <div th:replace="common :: headermenu"></div>
         <!-- header section end-->
-
         <!-- page heading start-->
         <div class="page-heading">
                 <h3>
@@ -76,7 +73,6 @@
 <script src="js/modernizr.min.js"></script>
 <script src="js/jquery.nicescroll.js"></script>-->
 <div th:include="common :: #commonscript"></div>
-
 <!--easy pie chart-->
 <script src="js/easypiechart/jquery.easypiechart.js"></script>
 <script src="js/easypiechart/easypiechart-init.js"></script>
@@ -165,7 +161,6 @@
             dataType : 'json',
             data: {"function_id": 'main_select'},
             success : function (opts) {
-                debugger;
             if (opts && opts.length > 0) {
                 var html = [];
                 for (var i = 0; i < opts.length; i++) {

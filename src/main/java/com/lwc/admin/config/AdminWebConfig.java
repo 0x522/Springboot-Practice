@@ -7,17 +7,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-//@EnableWebMvc
 @Configuration
 public class AdminWebConfig implements WebMvcConfigurer {
-
-
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/aaa/**")
-//                .addResourceLocations("classpath:/static/");
-//
-//    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

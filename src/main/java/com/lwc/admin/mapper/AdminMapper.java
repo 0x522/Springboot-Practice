@@ -8,12 +8,15 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface AdminMapper  extends BaseMapper<Admin> {
 
    public Integer getAdmin(String username,String password);
 
-   public List<Admin> allUser(String keywords);
+   public List<Admin> allUser(Map param);
+
+   public Integer allUserCount(Map param);
 
 }

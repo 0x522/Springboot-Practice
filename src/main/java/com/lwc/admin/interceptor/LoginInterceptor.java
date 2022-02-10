@@ -39,7 +39,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         //如果为空，则登录失败，拦截,一般会跳转到登录页面，并显示错误信息
         request.setAttribute("msg","请先登录");
-//        response.sendRedirect("/");
         request.getRequestDispatcher("/").forward(request,response);
         return false;
     }
