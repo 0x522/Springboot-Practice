@@ -76,4 +76,4 @@ info:
   mavenProjectName: @project.artifactId@
   mavenProjectVersion: @project.version@
 server:
-  port: 8080
+  port: 8686

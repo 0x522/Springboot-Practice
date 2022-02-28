@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="js/morris-chart/morris.css">
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-select.scss" rel="stylesheet" media="screen">
+    <script src="js/layui/layui.all.js"></script>
 
     <!--common-->
 
@@ -55,6 +56,9 @@
                 <!--            <button onclick="lower()" style="height: 40px;width: 60px" id="btn2">转小写</button>-->
                 <button type="button" class="btn btn-info" onclick="firstUpper()" id="btn3">首字母转大写</button>
                 <!--            <button onclick="firstUpper()" style="height: 40px;width: 60px" id="btn3">首字母转大写</button>-->
+                <button type="button" class="btn btn-info" onclick="regular()" id="btn4">正则匹配</button>
+                <button type="button" class="btn btn-info" onclick="autoAdd()" id="btn5">快速添加内容</button>
+                <button type="button" class="btn btn-info" onclick="dayDate()" id="btn6">通过天数返回时间</button>
             </div>
             <h3>
                 输出栏
@@ -107,11 +111,11 @@
 <script src="js/bootstrap-select.js"></script>
 <script>
 
-    $(document).ready(function() {
-
-        showFuncId();
-
-    })
+    // $(document).ready(function() {
+    //
+    //     showFuncId();
+    //
+    // })
     function upper() {
         $.ajax({
             type: "POST",
@@ -151,26 +155,77 @@
         })
     }
 
-    function showFuncId(){
-        $('#sel_role').empty();
-        var ciValue = $('#sel_role');
-        ciValue.append('请选择');
+    // function showFuncId(){
+    //     $('#sel_role').empty();
+    //     var ciValue = $('#sel_role');
+    //     ciValue.append('请选择');
+    //     $.ajax({
+    //         url :  "/toolcontroller/mainSelect",
+    //         type : 'post',
+    //         dataType : 'json',
+    //         data: {"function_id": 'main_select'},
+    //         success : function (opts) {
+    //         if (opts && opts.length > 0) {
+    //             var html = [];
+    //             for (var i = 0; i < opts.length; i++) {
+    //                 html.push(''+opts[i]+'');
+    //             }
+    //             ciValue.append(html.join(''));
+    //         }
+    //     }
+    // });
+    // }
+
+    function regular() {
         $.ajax({
-            url :  "/toolcontroller/mainSelect",
+            url :  "/toolcontroller/regularCheck",
             type : 'post',
             dataType : 'json',
-            data: {"function_id": 'main_select'},
-            success : function (opts) {
-            if (opts && opts.length > 0) {
-                var html = [];
-                for (var i = 0; i < opts.length; i++) {
-                    html.push(''+opts[i]+'');
+            data: {"intext": $("#intext").val(),"puttext":$("#puttext").val()},
+            success : function (data) {
+                if($("#intext").val()==""||$("#puttext").val()==""){
+                    layer.msg('请填写内容后匹配', {icon: 1});
+                }else if(data){
+                    layer.msg('匹配成功', {icon: 1});
+                }else {
+                    layer.msg('匹配失败', {icon: 1});
                 }
-                ciValue.append(html.join(''));
+
             }
-        }
-    });
+        });
+
     }
+
+
+    function autoAdd() {
+        $.ajax({
+            url :  "/toolcontroller/fastAdd",
+            type : 'post',
+            dataType : 'text',
+            data: {"intext": $("#intext").val()},
+            success : function (data) {
+                $("#puttext").val(data);
+                form.render();
+            }
+        });
+
+    }
+
+    function dayDate() {
+        $.ajax({
+            url :  "/toolcontroller/wrDayByDate",
+            type : 'post',
+            dataType : 'text',
+            data: {"intext": $("#intext").val()},
+            success : function (data) {
+                $("#puttext").val(data);
+                form.render();
+            }
+        });
+
+    }
+
+
 </script>
 
 
