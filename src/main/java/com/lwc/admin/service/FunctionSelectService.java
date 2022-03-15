@@ -1,4 +1,4 @@
-package com.lwc.admin.server;
+package com.lwc.admin.service;
 
 import com.lwc.admin.bean.FunctionSelect;
 import com.lwc.admin.mapper.FunctionSelectMapper;

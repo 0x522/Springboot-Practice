@@ -1,13 +1,11 @@
-package com.lwc.admin.server;
+package com.lwc.admin.service;
 
 
-import com.lwc.admin.bean.Admin;
 import com.lwc.admin.bean.vo.PageEntity;
 import com.lwc.admin.mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 
 @Service

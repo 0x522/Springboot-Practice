@@ -1,11 +1,8 @@
 package com.lwc.admin.controller;
 
 
-import com.lwc.admin.bean.Admin;
-import com.lwc.admin.bean.City;
 import com.lwc.admin.bean.User;
-import com.lwc.admin.server.AdminService;
-import com.lwc.admin.server.AnnoServce;
+import com.lwc.admin.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 

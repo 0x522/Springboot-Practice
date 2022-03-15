@@ -1,16 +1,10 @@
 package com.lwc.admin.controller;
 
 
-import com.lwc.admin.bean.Admin;
-import com.lwc.admin.bean.FunctionSelect;
 import com.lwc.admin.bean.vo.PageEntity;
-import com.lwc.admin.server.AdminService;
-import com.lwc.admin.server.FunctionSelectService;
-import com.lwc.admin.util.DateUnit;
-import com.lwc.admin.util.R;
-import org.apache.ibatis.annotations.Param;
+import com.lwc.admin.service.AdminService;
+import com.lwc.admin.service.FunctionSelectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;

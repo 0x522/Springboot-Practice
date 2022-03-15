@@ -1,4 +1,4 @@
-package com.lwc.admin.server;
+package com.lwc.admin.service;
 
 import com.lwc.admin.bean.Admin;
 import com.lwc.admin.mapper.AnnoMapper;
